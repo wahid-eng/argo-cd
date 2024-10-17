@@ -8,13 +8,16 @@ spec:
   source:
     repoURL: 'https://github.com/wahid-eng/argops.git'
     targetRevision: HEAD
-    chart: helm-chart
-    valueFiles:
-      - values.yaml
+    path: helm
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argops-app
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
