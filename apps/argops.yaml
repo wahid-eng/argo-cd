@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argops-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/wahid-eng/argops.git'
+    targetRevision: HEAD
+    chart: helm-chart
+    valueFiles:
+      - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argops-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
