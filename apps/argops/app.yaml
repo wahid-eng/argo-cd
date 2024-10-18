@@ -12,7 +12,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - https://github.com/wahid-eng/argo-cd/apps/argops/values.yaml
+        - https://raw.githubusercontent.com/wahid-eng/argo-cd/refs/heads/main/apps/argops/values.yaml
 
   destination:
     server: 'https://kubernetes.default.svc'
